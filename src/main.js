@@ -8,6 +8,11 @@ import DoctorSearch from './doctor-query.js'
 $(document).ready(function() {
   $('form#input').submit(function(event) {
     event.preventDefault();
+    $('ul.doctors').html('');
+    $('.searching').show();
+    $('.results').hide();
+    $('.no-results').hide();
+    $('.error').hide();
     let condition = $('#condition').val();
     if (condition === '') {
       condition = false;
@@ -18,6 +23,29 @@ $(document).ready(function() {
     }
 
     const search = new DoctorSearch(condition, name);
-    console.log(search);
+    let result;
+    let promise = search.getResults();
+    promise.then(function(response) {
+      $('.searching').hide();
+      result = JSON.parse(response);
+      if (result.data.length == 0) {
+        $('.no-results').show();
+      }
+      else {
+        $('.results').show();
+        const len = result.data.length;
+        if (len < 10) {
+          $('#num-doctors-found').text(len);
+        } else if (len == 10) {
+          $('#num-doctors-found').text("first 10");
+        }
+        console.log(result.data);
+      }
+    }, function(error) {
+      $('.searching').hide();
+      $('.error').show();
+      $('#error-msg').text(error.message);
+    });
+
   });
 });
