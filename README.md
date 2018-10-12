@@ -8,21 +8,20 @@ This application will return information about doctors based on location or medi
 
 ## Screenshots
 
-<!-- ![Landing Page 1](src/img/landing-page1.png)
-![Landing Page 2](src/img/landing-page2.png)
-![Landing Page 3](src/img/landing-page3.png) -->
+![Landing Page 1](src/img/screenshot1.png)
+![Landing Page 2](src/img/screenshot2.png)
 
 
 ## Technologies Employed
 
 * [BetterDoctor API](https://developer.betterdoctor.com)
 * HTML
-* jQuery
 * JavaScript
+* jQuery
 * CSS
 * SASS Preprocessing
+* Bootstrap
 * Webpack
-* Jasmine / Karma Spec Testing
 
 ## Installation Instructions
 

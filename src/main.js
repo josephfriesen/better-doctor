@@ -7,9 +7,17 @@ import DoctorSearch from './doctor-query.js'
 // Function to take a doctor returned from the Better Doctor API and print their relevant information on the page
 const doctorDisplay = (i, result) => {
   const doctor = result.data[i];
-  const address = doctor.practices[0].visit_address;
-  const newPatients = doctor.practices[0].accepts_new_patients;
-  const phone = doctor.practices[0].phones[0].number
+  const practices = doctor.practices
+  practices.sort(function(a,b) {
+    if (a.distance < b.distance) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
+  const address = practices[0].visit_address;
+  const newPatients = practices[0].accepts_new_patients;
+  const phone = practices[0].phones[0].number
   .replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
   $('.doctors').append(`<div class='doctor' id='doctor-${i}'></div>`);
   $(`#doctor-${i}`).html(`<div class='doctor-img' id='doctor-img-${i}'></div><div class='doctor-info' id='doctor-info-${i}'></div>`);
@@ -62,7 +70,6 @@ $(document).ready(function() {
     let condition = $('#condition').val();
     let name = $('#name').val();
     let special = $('#spec-list').val().toString();
-    console.log(special);
 
     const search = new DoctorSearch(condition, name, special);
     let result;
@@ -70,6 +77,7 @@ $(document).ready(function() {
     promise.then(function(response) {
       $('.searching').hide();
       result = JSON.parse(response);
+      console.log(result);
       if (result.data.length == 0) {
         $('.no-results').show();
       }
