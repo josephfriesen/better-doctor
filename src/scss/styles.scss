@@ -43,13 +43,26 @@
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
+  padding: 20px;
   border: 1px dotted grey;
 }
 
 .doctor-img {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   width: 40%;
+  padding: 5px 0;
+  img {
+    box-shadow: 2px 2px 2px 2px grey;
+  }
 }
 
 .doctor-info {
   width: 60%;
+}
+
+.list-label {
+  font-weight: bold;
+  font-style: italic;
 }
