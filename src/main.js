@@ -43,7 +43,7 @@ $(document).ready(function() {
 
   let specialtiesList;
   const searchSpecialties = new DoctorSearch();
-  const promise = searchSpecialties.getSpecialties();
+  const promise = searchSpecialties.get(searchSpecialties.urlSpecialties);
   promise.then(function(response) {
     const result = JSON.parse(response);
     specialtiesList = result.data;
@@ -73,7 +73,7 @@ $(document).ready(function() {
 
     const search = new DoctorSearch(condition, name, special);
     let result;
-    let promise = search.getResults();
+    let promise = search.get(search.url);
     promise.then(function(response) {
       $('.searching').hide();
       result = JSON.parse(response);
