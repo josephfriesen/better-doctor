@@ -8,7 +8,7 @@ import DoctorSearch from './doctor-query.js'
 $(document).ready(function() {
   $('form#input').submit(function(event) {
     event.preventDefault();
-    $('ul.doctors').html('');
+    $('.doctors').html('');
     $('.searching').show();
     $('.results').hide();
     $('.no-results').hide();
@@ -38,6 +38,12 @@ $(document).ready(function() {
           $('#num-doctors-found').text(len);
         } else if (len == 10) {
           $('#num-doctors-found').text("first 10");
+          for (let i = 0; i < len; i++) {
+            $('.doctors').append(`<div class='doctor' id='doctor-${i}'></div>`);
+            $(`#doctor-${i}`).html(`<div class='doctor-img' id='doctor-img-${i}'></div><div class='doctor-info' id='doctor-info-${i}'></div>`);
+            $(`#doctor-img-${i}`).html(`img ${i}`);
+            $(`#doctor-info-${i}`).html(`info $${i}`);
+          }
         }
         console.log(result.data);
       }

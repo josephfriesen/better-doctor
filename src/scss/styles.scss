@@ -11,7 +11,7 @@
   justify-content: flex-start;
   align-items: center;
   box-sizing: border-box;
-  width: 40%;
+  width: 60%;
   border: 1px solid green;
 }
 
@@ -21,10 +21,35 @@
   justify-content: flex-start;
   align-items: center;
   box-sizing: border-box;
-  width: 60%;
+  width: 100%;
   border: 1px solid pink;
+  padding: 10px;
 }
 
 .results, .no-results, .searching, .error {
   display: none;
+  width: 100%;
+}
+
+.doctors {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 2px solid red;
+}
+
+.doctor {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  border: 1px dotted grey;
+}
+
+.doctor-img {
+  width: 40%;
+}
+
+.doctor-info {
+  width: 60%;
 }
