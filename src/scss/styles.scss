@@ -11,8 +11,12 @@
   justify-content: flex-start;
   align-items: center;
   box-sizing: border-box;
-  width: 60%;
+  width: 40%;
+  padding: 10px;
   border: 1px solid green;
+  select {
+    width: 80%;
+  }
 }
 
 .output {
@@ -21,7 +25,7 @@
   justify-content: flex-start;
   align-items: center;
   box-sizing: border-box;
-  width: 100%;
+  width: 60%;
   border: 1px solid pink;
   padding: 10px;
 }
