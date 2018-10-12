@@ -4,7 +4,7 @@ export default class DoctorSearch {
     this.key = process.env.exports.apiKey;
     this.condition = condition;
     this.doctorName = name;
-    this.specialties = specialties; // specialties should be false or a string of uid's separated by commas
+    this.specialties = specialties; // specialties should be false or a string consisting of possibly multiple uid's separated by commas
     this.url = `https://api.betterdoctor.com/2016-03-01/doctors?user_key=${this.key}&location=${this.loc},50&sort=distance-asc`;
     if (this.condition) {
       this.url = this.url + `&query=${this.condition}`;
