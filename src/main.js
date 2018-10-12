@@ -50,7 +50,6 @@ $(document).ready(function() {
     for (let i = 0; i < specialtiesList.length; i++) {
       $('#spec-list').append(`<option value='${specialtiesList[i].uid}'>${specialtiesList[i].name}</option>`);
     }
-    console.log(specialtiesList);
   });
 
   $('form#input').submit(function(event) {
@@ -62,10 +61,10 @@ $(document).ready(function() {
     $('.error').hide();
     let condition = $('#condition').val();
     let name = $('#name').val();
-    let special = $('#spec-list').val();
+    let special = $('#spec-list').val().toString();
     console.log(special);
 
-    const search = new DoctorSearch(condition, name);
+    const search = new DoctorSearch(condition, name, special);
     let result;
     let promise = search.getResults();
     promise.then(function(response) {

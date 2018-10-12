@@ -13,7 +13,7 @@ export default class DoctorSearch {
       this.url = this.url + `&name=${this.doctorName}`;
     }
     if (this.specialties) {
-      this.url = `https://api.betterdoctor.com/2016-03-01/specialties?user_key=${this.key}&specialty_uid=${this.specialties}`;
+      this.url = this.url + `&specialty_uid=${this.specialties}`;
     }
     this.urlSpecialties = `https://api.betterdoctor.com/2016-03-01/specialties?user_key=${this.key}`;
   }
